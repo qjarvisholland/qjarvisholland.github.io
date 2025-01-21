@@ -6,49 +6,75 @@
     <title>qjarvisholland.github.io</title>
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <style>
-      body {
-          font-family: Arial, sans-serif;
-          margin: 0;
-          overflow: hidden;
-          touch-action: none; /* Prevent default touch behaviors */
-      }
-      svg {
-          width: 100vw;
-          height: 100vh;
-          display: block;
-      }
-      nav {
-          position: fixed;
-          top: 0;
-          width: 100%;
-          background: white;
-          z-index: 1000;
-          padding: 1rem;
-          box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      }
-      nav ul {
-          list-style: none;
-          padding: 0;
-          display: flex;
-          gap: 1rem;
-          margin: 0;
-      }
-      nav a {
-          text-decoration: none;
-          color: black;
-      }
-      nav a:hover {
-          text-decoration: underline;
-      }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        nav {
+            width: 100%;
+            padding: 1rem 0;
+            background-color: #f8f8f8;
+            margin-bottom: 2rem;
+        }
+
+        /* Graph Container styles */
+        #graph-container {
+	    height: 100vh;
+	    width: 100%;
+            /* flex-grow: 1; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* SVG styles */
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Node styles */
+        .node circle {
+            cursor: pointer;
+            touch-action: pan-x pan-y;
+        }
+
+        .node.dragging circle {
+            touch-action: none;
+        }
+
+        /* Link styles */
+        .link {
+            stroke-opacity: 0.6;
+        }
+
+        /* Text styles */
+        .node text {
+            user-select: none;
+            pointer-events: none;
+            fill: #333;
+            font-family: Arial, sans-serif;
+        }
+
+        .node {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
     </style>
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="index.html"></a></li>
-        </ul>
-    </nav>
-    <svg></svg>
-    <script src='main.js'></script>
+    <nav></nav>
+    <div id="graph-container">
+        <svg></svg>
+    </div>
+
+    <script src="main.js"></script>
 </body>
 </html>
